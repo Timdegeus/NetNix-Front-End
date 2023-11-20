@@ -9,7 +9,6 @@
 <body>
     <div id = "container">
         <h1>Gebruikerspaneel</h1>
-        
     </div>
 </body>
 </html>
