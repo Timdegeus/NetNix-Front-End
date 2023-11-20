@@ -8,9 +8,8 @@
 </head>
 <body>
     <div id = "container">
-        <nav>
-            <a href="#"><img src="img/netnix.svg" alt="logo" id="logo"></a>
-        </nav>
+        <h1>Gebruikerspaneel</h1>
+        
     </div>
 </body>
 </html>
