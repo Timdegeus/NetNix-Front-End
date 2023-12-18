@@ -11,7 +11,8 @@
         <nav>
             <a href="#"><img src="img/netnix.svg" alt="logo" id="logo"></a>
         </nav>
-        <h1>NetNix</h1>  
+        <h1>NetNix</h1> 
+        <a href="login.php"><p>Inloggen</p></a> 
     </div>
 </body>
 </html>
