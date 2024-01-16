@@ -9,6 +9,7 @@ body{
 #container{
     display: grid;
     grid-template-columns: repeat(6, 1fr);
+    min-height: 1000px;
 }
 
 nav{
@@ -17,6 +18,7 @@ nav{
     grid-column: 1/2;
     background-color: #332424;
     color: white;
+    align-items: flex-start;
 }
 
 #content{
@@ -31,6 +33,7 @@ ul{
     list-style-type: none;
     font-size: 1.2em;
     margin-top: 50px;
+    text-align: left;
 }
 
 ul li{
@@ -47,7 +50,18 @@ nav a:link{
     text-decoration: none;
 }
 
+nav a:hover{
+    color: #332424;
+    background-color: white;
+}
+
 #logo{
     width: 160px;
     padding: 35px;
+}
+
+#selected {
+    font-size: 1.4em;
+    color: rgb(185, 185, 185);
+    background-color: #332424;
 }

@@ -6,7 +6,7 @@ if(!(isset($_SESSION["loggedIn"]) && $_SESSION["loggedIn"] == "true"))
 {
 header("Location: login.php");
 exit;
-}
+}  
 
 ?>
 
@@ -23,8 +23,8 @@ exit;
         <nav>
             <a href="#"><img src="img/netnix.svg" alt="logo" id="logo"></a>
             <ul>
-                <li><a href="gebruikerspaneel.php" id="selected"><b>Dashboard</a></li>
-                <li><a href="accounts.php">Accounts</a></li>
+                <li><a href="gebruikerspaneel.php"><b>Dashboard</a></li>
+                <li><a href="accounts.php" id="selected">Accounts</a></li>
                 <li><a href="movies.php">Movies</a></li>
                 <li><a href="series.php">Series</a></li>
                 <li><a href="logout.php">Uitloggen</b></a></li>
@@ -36,4 +36,3 @@ exit;
     </div>
 </body>
 </html>
-<form action="/api/v1/user/register">
