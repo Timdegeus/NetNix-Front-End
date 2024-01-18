@@ -11,18 +11,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 
     curl_setopt($ch, CURLOPT_URL,"https://netnix.xyz/api/v1/admin/login");
     curl_setopt($ch, CURLOPT_POST, 1);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 
     curl_setopt($ch, CURLOPT_POSTFIELDS,
             "email=".$email."&password=".$password);
 
     $server_output = curl_exec($ch);
 
-    curl_close($ch);
-    
-    $_SESSION["loggedIn"] = true;
-    header("Location: gebruikerspaneel.php");
+    curl_close($ch); 
 
-    getallheaders()["Authorization"];
+    $response = json_decode($server_output);
+
+    if (isset($response->token))
+    {
+        $_SESSION["token"] = $response->token;
+        $_SESSION["loggedIn"] = true;
+        header("Location: gebruikerspaneel.php");
+    }
+    else
+    {
+        header("Location: login.php");
+    }
 }
 ?>
 
