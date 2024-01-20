@@ -1,2 +1,2 @@
-# NetNix-voor-einde
-Front end voor de netnix website die niet gejat is van netflix
+# NetNix-Front-End
+De front en voor de netnix webapplicatie.

@@ -7,7 +7,8 @@ if(!(isset($_SESSION["loggedIn"]) && $_SESSION["loggedIn"] == "true"))
 header("Location: login.php");
 exit;
 }
-
+else
+{
 ?>
 
 <!DOCTYPE html>
@@ -30,6 +31,54 @@ exit;
                 <li><a href="logout.php">Uitloggen</b></a></li>
             </ul>
         </nav>
+    <?php
+
+    $ch = curl_init();
+
+    curl_setopt($ch, CURLOPT_URL,"https://netnix.xyz/api/v1/serie/getAll");
+    //curl_setopt($ch, CURLOPT_POST, 1);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+
+    $server_output = curl_exec($ch);
+
+    curl_close($ch); 
+
+    $response = json_decode($server_output);
+
+
+    foreach ($response as $serie)
+    {
+        $ch2 = curl_init();
+        curl_setopt($ch2, CURLOPT_URL, "https://netnix.xyz/api/v1/episode/getAllFromSerie");
+        curl_setopt($ch, CURLOPT_POST, 1);
+        curl_setopt($ch2, CURLOPT_RETURNTRANSFER, 1);
+
+        curl_setopt($ch, CURLOPT_POSTFIELDS,
+            "serie_id=".$serie->id);
+
+        $server_output2 = curl_exec($ch2);
+
+        curl_close($ch2);
+
+        $response2 = json_decode($server_output2);
+
+       ?>
+        <div id="content">
+            <h1>Gebruikerspaneel</h1>
+            <?php echo $serie->title; ?> 
+            <select>
+            <?php
+            foreach ($response2 as $episode)
+            {
+                echo "<option>" . $episode->title . "</option>";
+            }
+            ?>
+            </select> 
+            </div id="content">
+        <?php
+    }
+}
+?>
         <div id="content">
             <h1>Gebruikerspaneel</h1>
         </div id="content">
