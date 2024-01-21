@@ -57,14 +57,14 @@ else
 
        ?>
         
-            <?php var_dump($movie) ?>        
-            </div id="content">
+            <?php  echo $movie->title; ?>        
+            
         <?php
     }
 }   
 
 ?>
-
+</div id="content">
         </div>
     </body>
 </html>

@@ -50,21 +50,12 @@ else
     curl_close($ch); 
 
     $response = json_decode($server_output);
-
-
-    foreach ($response as $subscriptions)
-    {
-
-       ?>
-        
-            <?php var_dump($subscriptions) ?>        
-            </div id="content">
-        <?php
-    }
+    
+    echo $response->profit;
 }   
 
 ?>
-
+            </div content>
         </div>
     </body>
 </html>

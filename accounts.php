@@ -52,11 +52,12 @@ else
            ?>
             <div id="content">
                 <?php echo $user->email; ?>        
-                </div id="content">
+                
             <?php
         }
 }
         ?>
+        </div id="content">
     </div>
 </body>
 </html>

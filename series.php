@@ -72,7 +72,7 @@ else
             }
             ?>
             </select> 
-            </div id="content">
+            
         <?php
     }
 }
