@@ -37,7 +37,7 @@ else
 
     $ch = curl_init();
 
-    curl_setopt($ch, CURLOPT_URL,"https://netnix.xyz/api/v1/movie/getAll");
+    curl_setopt($ch, CURLOPT_URL,"https://netnix.xyz/api/v1/movie/get");
     //curl_setopt($ch, CURLOPT_POST, 1);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 
@@ -48,7 +48,7 @@ else
     $response = json_decode($server_output);
 
 
-    foreach ($response as $movie )
+    foreach ($response as $movie)
     {
 
        ?>

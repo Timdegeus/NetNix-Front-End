@@ -35,7 +35,7 @@ else
 
     $ch = curl_init();
 
-    curl_setopt($ch, CURLOPT_URL,"https://netnix.xyz/api/v1/serie/getAll");
+    curl_setopt($ch, CURLOPT_URL,"https://netnix.xyz/api/v1/serie/get");
     //curl_setopt($ch, CURLOPT_POST, 1);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 
@@ -49,8 +49,8 @@ else
     foreach ($response as $serie)
     {
         $ch2 = curl_init();
-        curl_setopt($ch2, CURLOPT_URL, "https://netnix.xyz/api/v1/episode/getAllFromSerie");
-        curl_setopt($ch, CURLOPT_POST, 1);
+        curl_setopt($ch2, CURLOPT_URL, "https://netnix.xyz/api/v1/episode/get");
+        curl_setopt($ch2, CURLOPT_POST, 1);
         curl_setopt($ch2, CURLOPT_RETURNTRANSFER, 1);
 
         curl_setopt($ch, CURLOPT_POSTFIELDS,

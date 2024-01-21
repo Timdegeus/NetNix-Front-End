@@ -7,7 +7,8 @@ if(!(isset($_SESSION["loggedIn"]) && $_SESSION["loggedIn"] == "true"))
 header("Location: login.php");
 exit;
 }  
-
+else
+{
 ?>
 
 <!DOCTYPE html>
@@ -30,9 +31,30 @@ exit;
                 <li><a href="logout.php">Uitloggen</b></a></li>
             </ul>
         </nav>
-        <div id="content">
-            <h1>Gebruikerspaneel</h1>
-        </div id="content">
+        <?php
+        $ch = curl_init();
+
+        curl_setopt($ch, CURLOPT_URL,"https://netnix.xyz/api/v1/users");
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+    
+        $server_output = curl_exec($ch);
+    
+        curl_close($ch); 
+    
+        $response = json_decode($server_output);
+    
+    
+        foreach ($response as $user)
+        {
+           ?>
+            <div id="content">
+                <h1>Gebruikerspaneel</h1>
+                <?php echo $user->email; ?>        
+                </div id="content">
+            <?php
+        }
+}
+        ?>
     </div>
 </body>
 </html>
