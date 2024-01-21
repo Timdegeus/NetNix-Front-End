@@ -58,7 +58,8 @@ else
 
         curl_close($ch2);
 
-        $response2 = json_decode($server_output2, true);
+        $response2 = json_decode($server_output2);
+        //var_dump($response2);
 
        ?>
         <div id="content">
