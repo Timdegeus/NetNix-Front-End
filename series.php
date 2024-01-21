@@ -2,13 +2,14 @@
 
 session_start();    
 
-if(!(isset($_SESSION["loggedIn"]) && $_SESSION["loggedIn"] == "true")) 
+if(!(isset($_SESSION["loggedIn"]) && $_SESSION["loggedIn"] == "true" && $_SESSION["token"])) 
 {
-header("Location: login.php");
-exit;
+    header("Location: login.php");
+    exit;
 }
 else
 {
+    $token = $_SESSION["token"];
 ?>
 
 <!DOCTYPE html>
@@ -36,8 +37,8 @@ else
 
     $ch = curl_init();
 
-    curl_setopt($ch, CURLOPT_URL,"https://netnix.xyz/api/v1/serie/get");
-    //curl_setopt($ch, CURLOPT_POST, 1);
+    curl_setopt($ch, CURLOPT_URL,"https://netnix.xyz/api/v1/serie/get", );
+    curl_setopt($ch, CURLOPT_HTTPHEADER, ["Authorization: Bearer ".$token]);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 
     $server_output = curl_exec($ch);
@@ -46,32 +47,27 @@ else
 
     $response = json_decode($server_output);
 
-
     foreach ($response as $serie)
     {
         $ch2 = curl_init();
-        curl_setopt($ch2, CURLOPT_URL, "https://netnix.xyz/api/v1/episode/get");
-        curl_setopt($ch2, CURLOPT_POST, 1);
+        curl_setopt($ch2, CURLOPT_URL, "https://netnix.xyz/api/v1/episode/get?id=".$serie->id);
+        curl_setopt($ch2, CURLOPT_HTTPHEADER, ["Authorization: Bearer ".$token]);
         curl_setopt($ch2, CURLOPT_RETURNTRANSFER, 1);
-
-        curl_setopt($ch, CURLOPT_POSTFIELDS,
-            "serie_id=".$serie->id);
 
         $server_output2 = curl_exec($ch2);
 
         curl_close($ch2);
 
-        $response2 = json_decode($server_output2);
+        $response2 = json_decode($server_output2, true);
 
        ?>
         <div id="content">
-            <h1>Gebruikerspaneel</h1>
             <?php echo $serie->title; ?> 
             <select>
             <?php
             foreach ($response2 as $episode)
             {
-                echo "<option>" . $episode->title . "</option>";
+                echo "<option>".$episode->title."</option>";
             }
             ?>
             </select> 

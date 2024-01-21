@@ -9,6 +9,7 @@ exit;
 }  
 else
 {
+    $token = $_SESSION["token"];
 ?>
 
 <!DOCTYPE html>
@@ -36,6 +37,7 @@ else
         $ch = curl_init();
 
         curl_setopt($ch, CURLOPT_URL,"https://netnix.xyz/api/v1/users");
+        curl_setopt($ch, CURLOPT_HTTPHEADER, ["Authorization: Bearer ".$token]);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
     
         $server_output = curl_exec($ch);
@@ -49,7 +51,6 @@ else
         {
            ?>
             <div id="content">
-                <h1>Gebruikerspaneel</h1>
                 <?php echo $user->email; ?>        
                 </div id="content">
             <?php
