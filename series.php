@@ -50,7 +50,7 @@ else
     foreach ($response as $serie)
     {
         $ch2 = curl_init();
-        curl_setopt($ch2, CURLOPT_URL, "https://netnix.xyz/api/v1/episode/get?id=".$serie->id);
+        curl_setopt($ch2, CURLOPT_URL, "https://netnix.xyz/api/v1/episode/get?serie_id=".$serie->id);
         curl_setopt($ch2, CURLOPT_HTTPHEADER, ["Authorization: Bearer ".$token]);
         curl_setopt($ch2, CURLOPT_RETURNTRANSFER, 1);
 
