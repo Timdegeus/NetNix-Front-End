@@ -28,6 +28,7 @@ else
                 <li><a href="accounts.php" id="selected">Accounts</a></li>
                 <li><a href="movies.php">Movies</a></li>
                 <li><a href="series.php">Series</a></li>
+                <li><a href="subscription.php">Subscription</a></li>
                 <li><a href="logout.php">Uitloggen</b></a></li>
             </ul>
         </nav>

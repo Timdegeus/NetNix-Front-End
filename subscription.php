@@ -28,9 +28,9 @@ else
                         <ul>
                             <li><a href="gebruikerspaneel.php"><b>Dashboard</a></li>
                             <li><a href="accounts.php">Accounts</a></li>
-                            <li><a href="movies.php" id="selected">Movies</a></li>
+                            <li><a href="movies.php">Movies</a></li>
                             <li><a href="series.php">Series</a></li>
-                            <li><a href="subscription.php">Subscription</a></li>
+                            <li><a href="subscription.php" id="selected">Subscription</a></li>
                             <li><a href="logout.php">Uitloggen</b></a></li>
                         </ul>
                     </nav>
@@ -41,7 +41,7 @@ else
 
     $ch = curl_init();
 
-    curl_setopt($ch, CURLOPT_URL,"https://netnix.xyz/api/v1/movie/get");
+    curl_setopt($ch, CURLOPT_URL,"https://netnix.xyz/api/v1/user/getMonthlyProfits");
     curl_setopt($ch, CURLOPT_HTTPHEADER, ["Authorization: Bearer ".$token]);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 
@@ -52,12 +52,12 @@ else
     $response = json_decode($server_output);
 
 
-    foreach ($response as $movie)
+    foreach ($response as $subscriptions)
     {
 
        ?>
         
-            <?php var_dump($movie) ?>        
+            <?php var_dump($subscriptions) ?>        
             </div id="content">
         <?php
     }
